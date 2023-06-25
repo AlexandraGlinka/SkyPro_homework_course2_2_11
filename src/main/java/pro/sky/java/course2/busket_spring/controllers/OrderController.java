@@ -1,7 +1,9 @@
 package pro.sky.java.course2.busket_spring.controllers;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.java.course2.busket_spring.service.OrderService;
 import pro.sky.java.course2.busket_spring.service.OrderServiceImpl;
@@ -18,7 +20,8 @@ public class OrderController {
     }
 
     @GetMapping("/add")
-    public void addItemsToCart(List<Integer> itemsId) {
+    public void addItemsToCart(@RequestParam List<Integer> itemsId) {
+        // без @RequestParam - 500 ошибка, хотя названия одинаковые
         orderService.addItemsToCart(itemsId);
     }
 
